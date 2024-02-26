@@ -41,7 +41,7 @@ class _RegisterForm extends State<RegisterForm> {
     if (isEmailValid && isPasswordValid && isConfirmPasswordValid) {
       // Trigger login and pass a completion callback
       Provider.of<AuthProvider>(context, listen: false)
-          .login(emailController.text, passwordController.text, context,
+          .register(emailController.text, passwordController.text, context,
               (errorMessage) {
         if (errorMessage.isEmpty) {
           Navigator.of(context)

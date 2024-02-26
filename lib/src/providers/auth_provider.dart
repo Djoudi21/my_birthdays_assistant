@@ -64,6 +64,28 @@ class AuthProvider with ChangeNotifier {
     );
   }
 
+  void register(
+      email, password, context, Function(String) completionCallback) async {
+    var response = await dioAuthRepository.register(email, password);
+    response.fold(
+      (error) {
+        // Handle failure
+        completionCallback(error.message);
+      },
+      (data) {
+        // Handle success
+        setTokens(data.tokens.accessToken, data.tokens.refreshToken);
+        setLoggedIn(true);
+        setCurrentUser({"email": data.userData.email, "id": data.userData.id});
+        // Access AnotherProvider and set its value
+        final navbarProvider =
+            Provider.of<NavbarProvider>(context, listen: false);
+        navbarProvider.setCurrentPageIndex(0);
+        completionCallback('');
+      },
+    );
+  }
+
   void logout(BuildContext context) {
     // Clear tokens and set isLoggedIn to false
     setTokens('', '');
