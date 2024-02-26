@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../components/auth_form.dart';
+import 'package:my_birthdays_assistant/src/components/register_form.dart';
 import 'package:my_birthdays_assistant/src/router/route_generator.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -27,7 +27,12 @@ class _RegisterScreen extends State<RegisterScreen> {
             child: Column(children: [
               const Text('Inscrivez vous',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30)),
-              const Expanded(child: AuthForm()),
+              const Expanded(
+                  flex: 3,
+                  child: Padding(
+                    padding: EdgeInsets.all(20),
+                    child: RegisterForm(),
+                  )),
               Expanded(
                   child: GestureDetector(
                       onTap: redirectToLogin,

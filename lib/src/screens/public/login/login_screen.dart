@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_birthdays_assistant/src/router/route_generator.dart';
-import '../../../components/auth_form.dart';
+import '../../../components/login_form.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -36,7 +36,7 @@ class _LoginScreen extends State<LoginScreen> {
                 flex: 3,
                 child: Padding(
                   padding: EdgeInsets.all(20),
-                  child: AuthForm(),
+                  child: LoginForm(),
                 )),
             Expanded(
                 child: GestureDetector(

@@ -7,7 +7,7 @@ class NavbarProvider with ChangeNotifier {
   // GETTERS
   int get currentPageIndex => _currentPageIndex;
 
-  void setCurrentPageIndex(int value, BuildContext context) {
+  void setCurrentPageIndex(int value) {
     _currentPageIndex = value;
     notifyListeners();
   }

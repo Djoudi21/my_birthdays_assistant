@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class BaseButton extends StatefulWidget {
   final VoidCallback onPressed;
+  final String label;
 
-  const BaseButton({super.key, required this.onPressed});
+  const BaseButton({super.key, required this.onPressed, required this.label});
   @override
   State<BaseButton> createState() => _BaseButton();
 }
@@ -18,8 +19,8 @@ class _BaseButton extends State<BaseButton> {
     return ElevatedButton(
         style: style,
         onPressed: widget.onPressed,
-        child: const Text('Valider',
-            style:
-                TextStyle(fontWeight: FontWeight.w500, color: Colors.white)));
+        child: Text(widget.label,
+            style: const TextStyle(
+                fontWeight: FontWeight.w500, color: Colors.white)));
   }
 }

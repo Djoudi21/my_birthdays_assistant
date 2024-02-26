@@ -6,13 +6,13 @@ import 'package:my_birthdays_assistant/src/components/atomics/base_button.dart';
 import 'package:provider/provider.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class AuthForm extends StatefulWidget {
-  const AuthForm({super.key});
+class LoginForm extends StatefulWidget {
+  const LoginForm({super.key});
   @override
-  State<AuthForm> createState() => _AuthForm();
+  State<LoginForm> createState() => _LoginForm();
 }
 
-class _AuthForm extends State<AuthForm> {
+class _LoginForm extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
   bool _passwordVisible = false;
   String? emailInputErrorMessage;
@@ -34,7 +34,8 @@ class _AuthForm extends State<AuthForm> {
     if (isEmailValid && isPasswordValid) {
       // Trigger login and pass a completion callback
       Provider.of<AuthProvider>(context, listen: false)
-          .login(emailController.text, passwordController.text, (errorMessage) {
+          .login(emailController.text, passwordController.text, context,
+              (errorMessage) {
         if (errorMessage.isEmpty) {
           Navigator.of(context)
               .pushReplacementNamed(RouteGenerator.protectedPages);
@@ -123,6 +124,7 @@ class _AuthForm extends State<AuthForm> {
                     },
                   ))),
           BaseButton(
+            label: 'Valider',
             onPressed: validateForm,
           ),
         ],

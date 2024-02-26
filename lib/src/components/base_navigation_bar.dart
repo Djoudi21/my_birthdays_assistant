@@ -16,12 +16,12 @@ class BaseNavigationBar extends StatelessWidget {
             ),
             NavigationDestination(
               icon: Icon(Icons.settings),
-              label: 'settings',
+              label: 'Réglages',
             ),
           ],
           selectedIndex: navbarProvider.currentPageIndex,
           onDestinationSelected: (int index) {
-            navbarProvider.setCurrentPageIndex(index, context);
+            navbarProvider.setCurrentPageIndex(index);
           });
     });
   }
